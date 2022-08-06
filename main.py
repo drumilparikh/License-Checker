@@ -1,9 +1,11 @@
 from getfile import *
 from readlicense import *
 from fetchlicense import *
-import pdb
 
-list=get_file("/home/drumil/Downloads/travelwebsite")
+
+name = input("Enter the project root directory")
+
+list=get_file(name)
 licenses_1a=fetchlicense(list,"license.txt")
 properlicenses= {}
 unlicensed = []
