@@ -5,7 +5,7 @@ import pdb
 
 list=get_file("/home/drumil/Downloads/travelwebsite")
 licenses_1a=fetchlicense(list,"license.txt")
-
+properlicenses= {}
 unlicensed = []
 for m in licenses_1a:
     if(licenses_1a[m] == "none"):
@@ -13,10 +13,13 @@ for m in licenses_1a:
     else:
         # print(m)
         # print(licenses_1a[m])
+        properlicenses[m]=licenses_1a[m]
 
         pass
-licenses_1c=[]
 
+
+notlicensed=[]
+improperlicenses={}
 licenses_1b=fetchlicense(unlicensed,"readme.md")
 for m in licenses_1b:
     if(licenses_1b[m] is None):
@@ -30,11 +33,15 @@ for m in licenses_1b:
     if(licenses_1b[m]!=""):
         # print(m)
         # print(licenses_1b[m])
+        improperlicenses[m]=licenses_1b[m]
         pass
     else:
-        licenses_1c.append(m)
+        notlicensed.append(m)
 
-for m in licenses_1c:
-    print(m)
-#uncomment line 34 for licenses which are mentioned in a non standard format
-#uncomment line 19 for licenses which are mentioned in a standard format
+print(properlicenses)
+print("\n")
+print("\n")
+print(improperlicenses)
+print("\n")
+print("\n")
+print(notlicensed)
