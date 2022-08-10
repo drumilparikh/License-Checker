@@ -8,6 +8,8 @@ def get_file(input):
     unique=set()
     my_list=[]
     new_list=[]
+    for file in list(p.glob('**/*.css')):
+        new_list.append(str(file))
     for file in list(p.glob('**/*.js')):
         new_list.append(str(file))
 

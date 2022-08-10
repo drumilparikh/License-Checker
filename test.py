@@ -1,11 +1,20 @@
-# from collections import Counter
+from pathlib import Path
+import os
 
-a=["MIT","ACLU","UCB","UCLA"]
 
-b=["MIT","Apache","Mozilla","GNU general public","gnu public general public", "gnu affero general public LICENSE","BSD-3-Clause"]
+def get_file(input):
+    p=Path(input)
 
-# print(Counter(a)==Counter(b))
-
-s=set(a).intersection(b)
-m="".join(s)
-print(m)
+    unique=set()
+    my_list=[]
+    new_list=[]
+    # for file in list(p.glob('**/*.js')):
+    #     new_list.append(str(file))
+    for file in list(p.glob('**/*.css')):
+        new_list.append(str(file))
+    return new_list
+        # print(list(p.glob('**/*.css')))
+    # for m in list(p.glob('**/*.js')):
+    #     # print(m)
+    #     pass
+# print(get_file("/home/drumil/Downloads/travelwebsite"))

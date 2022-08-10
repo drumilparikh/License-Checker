@@ -14,9 +14,9 @@ def readlicense(name):
         return "COMMON DEVELOPMENT AND DISTRIBUTED"
     elif(m=="GNU"):
             if("LESSER GENERAL PUBLIC" in string.upper()):
-                return ("GNU LESSER GENERAL PUBLIC")
+                return ("LGPL")
             else:
-                return ("GNU GENERAL PUBLIC")
+                return ("GPL")
     else:
         return m
     f.close()

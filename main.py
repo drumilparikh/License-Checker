@@ -3,8 +3,8 @@ from readlicense import *
 from fetchlicense import *
 
 
-name = input("Enter the project root directory")
-
+# name = input("Enter the project root directory")
+name="/home/drumil/Downloads/travelwebsite"
 list=get_file(name)
 licenses_1a=fetchlicense(list,"license.txt")
 properlicenses= {}
@@ -13,11 +13,7 @@ for m in licenses_1a:
     if(licenses_1a[m] == "none"):
         unlicensed.append(m)
     else:
-        # print(m)
-        # print(licenses_1a[m])
         properlicenses[m]=licenses_1a[m]
-
-        pass
 
 
 notlicensed=[]
@@ -39,10 +35,15 @@ for m in licenses_1b:
         pass
     else:
         notlicensed.append(m)
-print(properlicenses)
+for m in properlicenses:
+    print(m.removeprefix(name + "/"))
+    print(properlicenses[m])
 print("\n")
 print("\n")
-print(improperlicenses)
+for m in improperlicenses:
+    print(m.removeprefix(name + "/"))
+    print(improperlicenses[m])
 print("\n")
 print("\n")
-print(notlicensed)
+for m in notlicensed:
+    print(m.removeprefix(name + "/"))
