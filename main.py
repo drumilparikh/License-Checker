@@ -39,7 +39,6 @@ for m in licenses_1b:
         pass
     else:
         notlicensed.append(m)
-
 print(properlicenses)
 print("\n")
 print("\n")

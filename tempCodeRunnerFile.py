@@ -1,1 +1,7 @@
-/home/drumil/Downloads/travelwebsite
+print(properlicenses)
+# print("\n")
+# print("\n")
+# print(improperlicenses)
+# print("\n")
+# print("\n")
+# print(notlicensed)
