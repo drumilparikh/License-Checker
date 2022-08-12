@@ -1,8 +1,11 @@
 from getfile import *
 from readlicense import *
 from fetchlicense import *
+from pprint import pprint
+
 
 def fetchlicense(list,file):
+
     licenses={}
     for x in list:
         licenses[x]="none"
@@ -15,7 +18,7 @@ def fetchlicense(list,file):
                 if os.path.exists(x):
                     for path in os.listdir(x):
                         if os.path.isfile(os.path.join(x, path)):
-                            if(path.lower()==file):
+                            if path.lower()==(file + ".md") or path.lower()==(file + ".txt") :
                                 # pdb.set_trace()
                                 licenses[str]= readlicense(x + "/" + path)
                                 x=""

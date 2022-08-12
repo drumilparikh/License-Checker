@@ -1,20 +1,27 @@
-from pathlib import Path
-import os
+from getfile import *
+from readlicense import *
+from fetchlicense import *
 
+def fetchlicense(list,file):
+    licenses={}
+    for x in list:
+        licenses[x]="none"
+    for str in list:
+            x=str
+            while(x!=""):
+                if(x.rfind("/") == -1):
+                    break
+                x=x[:(x.rfind("/"))]
+                if os.path.exists(x):
+                    for path in os.listdir(x):
+                        if os.path.isfile(os.path.join(x, path)) and path.lower()==file and readlicense(x + "/" + path):
+                            # if(path.lower()==file):
+                            #     # pdb.set_trace()
+                            licenses[str]= readlicense(x + "/" + path)
+                            x=""
+                            break
+                else:
+                    pass
+    return licenses
 
-def get_file(input):
-    p=Path(input)
-
-    unique=set()
-    my_list=[]
-    new_list=[]
-    # for file in list(p.glob('**/*.js')):
-    #     new_list.append(str(file))
-    for file in list(p.glob('**/*.css')):
-        new_list.append(str(file))
-    return new_list
-        # print(list(p.glob('**/*.css')))
-    # for m in list(p.glob('**/*.js')):
-    #     # print(m)
-    #     pass
-# print(get_file("/home/drumil/Downloads/travelwebsite"))
+# print(fetchlicense(['/home/drumil/Downloads/travelwebsite/tinymce_6.1.0_dev/tinymce/modules/tinymce/tools/modules/grunt-utils.js'],"readme.md"))

@@ -1,12 +1,14 @@
-from getfile import *
-from readlicense import *
-from fetchlicense import *
+from getfile import get_file
+from readlicense import readlicense
+from fetchlicense import fetchlicense
+
+# NAME = input("Enter the project root directory")
+NAME="/home/drumil/Downloads/travelwebsite"
+filelist=get_file(NAME)
+
+licenses_1a=fetchlicense(filelist,"license")
 
 
-# name = input("Enter the project root directory")
-name="/home/drumil/Downloads/travelwebsite"
-list=get_file(name)
-licenses_1a=fetchlicense(list,"license.txt")
 properlicenses= {}
 unlicensed = []
 for m in licenses_1a:
@@ -18,10 +20,7 @@ for m in licenses_1a:
 
 notlicensed=[]
 improperlicenses={}
-licenses_1b=fetchlicense(unlicensed,"readme.md")
-for m in licenses_1b:
-    if(licenses_1b[m] is None):
-        licenses_1b[m]="none"
+licenses_1b=fetchlicense(filelist,"readme")
 
 for m in licenses_1b:
     if(licenses_1b[m]=="none"):
@@ -29,21 +28,18 @@ for m in licenses_1b:
 
 for m in licenses_1b:
     if(licenses_1b[m]!=""):
-        # print(m)
-        # print(licenses_1b[m])
         improperlicenses[m]=licenses_1b[m]
-        pass
     else:
-        notlicensed.append(m)
+        if m not in properlicenses:
+            notlicensed.append(m)
+
 for m in properlicenses:
-    print(m.removeprefix(name + "/"))
+    print(m.removeprefix(NAME + "/"))
     print(properlicenses[m])
 print("\n")
-print("\n")
 for m in improperlicenses:
-    print(m.removeprefix(name + "/"))
+    print(m.removeprefix(NAME + "/"))
     print(improperlicenses[m])
 print("\n")
-print("\n")
 for m in notlicensed:
-    print(m.removeprefix(name + "/"))
+    print(m.removeprefix(NAME + "/"))
